@@ -1,0 +1,23 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const minInput = document.getElementById('minValue');
+    const maxInput = document.getElementById('maxValue');
+    const generateButton = document.getElementById('generateButton');
+    const resultDisplay = document.getElementById('result');
+
+    generateButton.addEventListener('click', () => {
+        const minValue = parseInt(minInput.value);
+        const maxValue = parseInt(maxInput.value);
+
+        // Validate input values
+        if (isNaN(minValue) || isNaN(maxValue) || minValue > maxValue) {
+            resultDisplay.textContent = 'Please enter valid minimum and maximum values.';
+            resultDisplay.style.color = 'red';
+            return;
+        }
+
+        // Generate random number
+        const randomNumber = Math.floor(Math.random() * (maxValue - minValue + 1)) + minValue;
+        resultDisplay.textContent = `Random Number: ${randomNumber}`;
+        resultDisplay.style.color = 'black';
+    });
+});
